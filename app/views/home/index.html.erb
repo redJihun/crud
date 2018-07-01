@@ -1,0 +1,14 @@
+<h1>게시물 목록 페이지입니다</h1>
+<a href='/home/new'>새 글 쓰기</a>
+<br><br>
+<%@posts.each do |x| %>
+    제목 : <%=x.title%><br><br>
+    내용 : <%=x.content%><br>
+    <a href='/home/destroy/<%=x.id%>'>삭제</a>
+    <%=link_to controller: "home", action: "destroy", post_id: x.id do%>
+        <button>삭제2</button>
+    <%end%>
+    <a href='/home/edit/<%=x.id%>'>[수정]</a>
+    <br>
+    -----------------------------<br>
+<%end%>
