@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
+  
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   root 'home#index'
+  
+  resources :users
+
+  resources :sessions, only: [:new, :create, :destroy]
   
   get 'home/index'
   #get 'home/index' => 'home#index'
@@ -7,13 +18,13 @@ Rails.application.routes.draw do
   get 'home/new'
   #get 'home/new' , to 'home#new'
 
-  post 'home/create'
+  post 'home/create' => 'home#create', as: 'posts'
   
   get 'home/destroy/:post_id', to: 'home#destroy', as: 'post_destroy'
   
   get 'home/edit/:post_id' => 'home#edit'
   
-  post 'home/update/:post_id' => 'home#update'
+  patch 'home/update/:post_id' => 'home#update', as: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,7 @@
+
+<%=form_tag(users_path) do%>
+    이름: <%=text_field_tag 'name'%><br>
+    이메일: <%=text_field_tag 'email'%><br>
+    비밀번호: <%=password_field_tag 'password'%><br>
+    <%=submit_tag '제출'%>
+<%end%>
